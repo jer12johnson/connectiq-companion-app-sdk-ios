@@ -8,3 +8,7 @@
 # Claude Code local settings/credentials (project-level skills/commands ARE committed)
 .claude/settings.local.json
 .claude/.credentials.json
+
+# Garmin Connect IQ signing key (should live outside the repo entirely; ignored here as defense in depth)
+developer_key
+*.der

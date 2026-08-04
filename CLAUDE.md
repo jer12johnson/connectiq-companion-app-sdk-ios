@@ -12,28 +12,7 @@ The SDK itself is a **prebuilt binary framework** (`ConnectIQ.xcframework`) dist
 
 ## Project governance
 
-The project constitution and spec-kit workflow now live in `ai-iq-pacing` — that's the canonical copy. The `.specify/` and `.claude/skills/` scaffolding still present in this repo is a leftover from before the split and is not actively used here; treat `ai-iq-pacing`'s `.specify/memory/constitution.md` as the source of truth if the two ever disagree.
-
-## Spec-Kit workflow
-
-This repo uses [GitHub Spec Kit](https://github.com/github/spec-kit) for spec-driven development, installed via the `specify` CLI (`pipx install git+https://github.com/github/spec-kit.git`). Shared infrastructure lives in `.specify/`; Claude Code skills live in `.claude/skills/`.
-
-Skills are invoked as slash commands, in this order per feature:
-
-1. `/speckit-constitution` — create/amend `.specify/memory/constitution.md` (governance only; never touches source)
-2. `/speckit-specify` — create a baseline feature spec
-3. `/speckit-clarify` *(optional)* — de-risk ambiguous areas before planning
-4. `/speckit-plan` — create an implementation plan from the spec
-5. `/speckit-tasks` — generate actionable tasks from the plan
-6. `/speckit-checklist` *(optional)* — generate quality checklists after planning
-7. `/speckit-analyze` *(optional)* — cross-artifact consistency check after tasks, before implementing
-8. `/speckit-implement` — execute the tasks
-9. `/speckit-converge` — assess the codebase and append remaining work as tasks
-10. `/speckit-taskstoissues` — turn tasks into tracked issues
-
-`create-new-feature.sh` (in `.specify/scripts/bash/`) is what `/speckit-specify` calls to scaffold a new feature branch/spec directory; `check-prerequisites.sh`, `setup-plan.sh`, and `setup-tasks.sh` back the later steps in the pipeline the same way — you generally don't call these scripts directly, the skills do.
-
-**`.claude/skills/` is committed** (only `.claude/settings.local.json` / `.claude/.credentials.json` are gitignored, since those are the only files that could carry agent-local credentials) — but as noted above, this scaffolding is a leftover; use it in `ai-iq-pacing` instead.
+The project constitution and spec-kit workflow live in `ai-iq-pacing`, not here — this repo doesn't have `.specify/`/`.claude/skills/` scaffolding of its own (removed after the split; it was a leftover duplicate that risked drifting out of sync with the canonical copy). Treat `ai-iq-pacing`'s `.specify/memory/constitution.md` as the source of truth for any governance question, and run spec-kit's `/speckit-*` skills there.
 
 ## Working with the ConnectIQ SDK API
 
