@@ -5,5 +5,6 @@
 # OS X
 .DS_Store
 
-# Spec Kit agent folder (may contain credentials/auth tokens)
-.claude/
+# Claude Code local settings/credentials (project-level skills/commands ARE committed)
+.claude/settings.local.json
+.claude/.credentials.json
